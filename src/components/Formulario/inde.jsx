@@ -4,7 +4,7 @@ import Input from "../Input";
 import ListaSuspensa from "../ListaSupensa";
 import "./Formulario.css";
 
-const Formulario = () => {
+const Formulario = (props) => {
   const times = [
     "Programação",
     "Frond-End",
@@ -22,7 +22,7 @@ const Formulario = () => {
 
   const aoSalvar = (event) => {
     event.preventDefault();
-    console.log({ nome, cargo, imagem, time });
+    props.aoColaboradorCadastrado({ nome, cargo, imagem, time });
   };
   return (
     <section className="formulario">
