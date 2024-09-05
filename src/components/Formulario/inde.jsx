@@ -24,6 +24,8 @@ const Formulario = (props) => {
     event.preventDefault();
     props.aoColaboradorCadastrado({ nome, cargo, imagem, time });
   };
+
+  
   return (
     <section className="formulario">
       <form onSubmit={aoSalvar}>
