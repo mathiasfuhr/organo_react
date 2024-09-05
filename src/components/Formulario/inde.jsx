@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Botao from "../Botao";
 import Input from "../Input";
 import ListaSuspensa from "../ListaSupensa";
@@ -14,18 +15,45 @@ const Formulario = () => {
     "Inovação e Gestão",
   ];
 
+  const [nome, setNome] = useState("");
+  const [cargo, setCargo] = useState("");
+  const [imagem, setImagem] = useState("");
+  const [time, setTime] = useState("");
 
-  const aoSalvar = (event)=>{
-    event.preventDefault()
-  }
+  const aoSalvar = (event) => {
+    event.preventDefault();
+    console.log({ nome, cargo, imagem, time });
+  };
   return (
     <section className="formulario">
       <form onSubmit={aoSalvar}>
         <h2>Preencha os dados do colaborador</h2>
-        <Input label="Nome" placeholder="Digite o seu nome" />
-        <Input label="Cargo" placeholder="Digite o cargo" />
-        <Input label="Imagem" placeholder="Digite o endereço da imagem" />
-        <ListaSuspensa label="Time" itens={times} />
+        <Input
+          valor={nome}
+          aoAlterado={(valor) => setNome(valor)}
+          obrigatorio={true}
+          label="Nome"
+          placeholder="Digite o seu nome"
+        />
+        <Input
+          valor={cargo}
+          aoAlterado={(valor) => setCargo(valor)}
+          obrigatorio={true}
+          label="Cargo"
+          placeholder="Digite o cargo"
+        />
+        <Input
+          valor={imagem}
+          aoAlterado={(valor) => setImagem(valor)}
+          label="Imagem"
+          placeholder="Digite o endereço da imagem"
+        />
+        <ListaSuspensa
+         valor={time}
+         aoAlterado={(valor) => setTime(valor)}
+         obrigatorio={true} 
+         label="Time" 
+         itens={times} />
         <Botao>Criar Card</Botao>
       </form>
     </section>
